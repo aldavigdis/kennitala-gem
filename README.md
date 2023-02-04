@@ -4,13 +4,13 @@ Process Icelandic kenntiala identification numbers.
 
 The Gem provides a class to handle "kennitala" identifier codes and monkey patched the String class to that strings can be cast to Kennitala objects. The class can be used to sanitize the identifiers and read information like the date of birth (or date of registration in the case of companies and organization), age and the type of entity.
 
-The class does not access external APIs or databases such National Registry or the Company Registry, so names and status (sex/gender, death, bankruptcy, credit rating etc.) cannot be accessed using the class. However, it can be used to sanitize and validate such data before being sent to external APIs, as such services are provided by private companies, which often charge a specific amount for each query.
+The class does not access external APIs or databases such as the National Registry or the Company Registry, so names and status (sex/gender, death, bankruptcy, credit rating etc.) cannot be accessed using the class. However, it can be used to sanitize and validate such data before being sent to external APIs, as such services are provided by private companies, which often charge a specific amount for each query.
 
 ## Uses of kennitala
 
 Unlike the US Social Security number and equivalents, the kennitala is only used for identification of persons and companies (as well as other registered organizations) — and is often used internally by educational institutions, companies and other organization as a primary identifier for persons (e.g. school, employee, customer and frequent flyer ID). It is not to be used for authentication (i.e. a password) and is not considered a secret per se. While a kennitala can be kept unencrypted in a database, publishing a kennitala or a list of them is generally not considered good practice and might cause liability.
 
-A kennitala is assigned to every newborn person and foreign nationals residing in Iceland as well as organizations and companies operating there. It is statically assigned and can not be changed.
+A kennitala is assigned to every newborn person and foreign national residing in Iceland as well as organizations and companies operating there. It is statically assigned and can not be changed.
 
 Article II, paragraph 10 of the 77/2000 Act on Data Protection (http://www.althingi.is/lagas/nuna/2000077.html) provides the legal framework regarding the use and processing of the kennitala in Iceland:
 
@@ -18,7 +18,7 @@ Article II, paragraph 10 of the 77/2000 Act on Data Protection (http://www.althi
 
 ## Technicalities
 
-The kennitala (`DDMMYY-RRCM`) is a 10-digit numeric string consisting on a date (date of birth for persons, date of registration for companies) in the form of `DDMMYY`, three two random digits (`RR`) a check digit (`C`) and a century identifier (`M`). A hyphen or space is often added between the year and random values (Example: `010130-2989`).
+The kennitala (`DDMMYY-RRCM`) is a 10-digit numeric string consisting on a date (date of birth for persons, date of registration for companies) in the form of `DDMMYY`, two random digits (`RR`) a check digit (`C`) and a century identifier (`M`). A hyphen or space is often added between the year and random values (Example: `010130-2989`).
 
 The number 40 is added to the registration day of companies and organizations. Hence, a kennitala for a company registered at January 1 1990 starts with `410190` as opposed to `010190` for a person born that day.
 
@@ -66,7 +66,7 @@ k.pp('🐈')
 k.entity_type
 # => "person"
 
-# It's also possible to use .company and .person to achieve the same thing
+# It's also possible to use .company? and .person? to achieve the same thing
 k.company?
 # => false
 
