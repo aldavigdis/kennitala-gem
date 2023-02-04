@@ -2,9 +2,6 @@
 
 # Monkey patch for the String class
 class String
-  alias_method 'to_kennitala', 'to_kt'
-  alias_method 'kennitala?', 'kt?'
-
   # Converts a String to a Kennitala object
   #
   # @return [Kennitala]
@@ -22,4 +19,7 @@ class String
   rescue ArgumentError, TypeError
     false
   end
+
+  alias_method 'to_kennitala', 'to_kt'
+  alias_method 'kennitala?', 'kt?'
 end
