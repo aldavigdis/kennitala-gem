@@ -3,6 +3,7 @@
 require 'date'
 require_relative 'kennitala_string'
 
+# The main Kennitala class
 class Kennitala
   VERSION = '0.1.0'
 
