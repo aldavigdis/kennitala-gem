@@ -13,7 +13,7 @@ class String
   #
   # This is useful if you want to deal with conditionals before catching errors.
   #
-  # @return [Kennitala]
+  # @return Boolean
   def kt?
     true if Kennitala.new(self)
   rescue ArgumentError, TypeError
