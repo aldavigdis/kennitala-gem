@@ -5,6 +5,7 @@ require_relative 'kennitala_string'
 
 # The main Kennitala class
 class Kennitala
+  # The current version of the gem
   VERSION = '0.1.0'
 
   # Initialize a Kennitala object
@@ -168,7 +169,7 @@ class Kennitala
 
   # Generate fake a birth number and check digit based on the first 6 digits
   #
-  # @param [String] The first six digits is a kennitala
+  # @param [String] date_hash The first six digits is a kennitala
   # @return [Hash, nil]
   def fake_randoms(date_hash)
     first_six = date_hash[:day] + date_hash[:month] + date_hash[:year]

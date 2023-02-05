@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
+require_relative 'lib/kennitala'
+
 Gem::Specification.new do |spec|
   spec.name = 'kennitala'
-  spec.version = '0.1.0'
+  spec.version = Kennitala::VERSION
   spec.authors = ['Alda Vigdís Skarphéðinsdóttir']
   spec.email = ['aldavigdis@aldavigdis.is']
 
@@ -31,6 +33,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 13.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
   spec.add_development_dependency 'rubocop', '~> 1.21'
+  spec.add_development_dependency 'yard', '~> 0.9'
 
   # For more information and examples about making a new gem, check out our
   # guide at: https://bundler.io/guides/creating_gem.html
