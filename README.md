@@ -116,6 +116,8 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/aldavigdis/kennitala-gem. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/aldavigdis/kennitala-gem/blob/master/CODE_OF_CONDUCT.md).
 
+Don't be afraid of using Rubocop for correcting your code and to make it conform to the standards defined in `.rubocop.yml`. You will want to run `bundle exec rubocop -A` to see if your code has any errors and correct them on the fly.
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
