@@ -98,7 +98,7 @@ k.age
 
 Install the gem and add to the application's Gemfile by executing:
 
-    $ bundle add jpg_or_webp --github=aldavigdis/kennitala-gem --branch 'main'
+    $ bundle add kennitala --github=aldavigdis/kennitala-gem --branch 'main'
 
 If bundler is not being used to manage dependencies, install the gem by
 installing the `specific_install` gem and then executing `gem specific_install`
