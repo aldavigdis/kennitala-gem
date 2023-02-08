@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kennitala (0.1.0)
+    kennitala (0.1.1)
 
 GEM
   remote: https://rubygems.org/
@@ -58,4 +58,4 @@ DEPENDENCIES
   yard (~> 0.9)
 
 BUNDLED WITH
-   2.3.25
+   2.3.7
