@@ -6,7 +6,7 @@ require_relative 'kennitala_string'
 # The main Kennitala class
 class Kennitala
   # The current version of the gem
-  VERSION = '0.1.0'
+  VERSION = '0.1.1'
 
   # Initialize a Kennitala object
   #
