@@ -6,7 +6,7 @@ require_relative 'kennitala_string'
 # The main Kennitala class
 class Kennitala
   # The current version of the gem
-  VERSION = '0.1.1'
+  VERSION = '0.1.2'
 
   # Initialize a Kennitala object
   #
@@ -90,9 +90,19 @@ class Kennitala
   #
   # @return [Fixnum]
   def day
-    date_integer = @value[0, 2].to_i
-    return @value[0, 2].to_i if date_integer < 32
-    return @value[0, 2].to_i - 40 if (date_integer > 40) && (date_integer < 71)
+    day_from_value = @value[0, 2].to_s[0, 2].to_i
+    day_from_value -= 40 if day_from_value > 40
+
+    # There are examples of a date overlapping the number of days in the
+    # given month. Those are considered to be from the last day of that month
+    # instad of the specified out-of-bounds day of the month.
+    # This is common for the year 1969 as new registrations were being done en
+    # masse.
+    last_day_of_month = Date.new(year, month, -1).day
+
+    return last_day_of_month if day_from_value > last_day_of_month
+
+    day_from_value
   end
 
   # Get a numeric representation of the month of birth or registration
@@ -252,6 +262,9 @@ class Kennitala
     day = sanitized_kt[0, 2].to_i
     day -= 40 if day > 40
     month = sanitized_kt[2, 2].to_i
+
+    last_day_of_month = Date.new(year, month, -1).day
+    day = last_day_of_month if day > last_day_of_month
     date = Date.new(year, month, day)
 
     return sanitized_kt if checks == true && date.instance_of?(Date)
