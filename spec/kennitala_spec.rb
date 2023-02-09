@@ -23,7 +23,7 @@ RSpec.describe Kennitala do
        expect(invalid_count).to eq(0)
      end
 
-  it 'enerates a valid random personal kennitala if kt_string equals false' do
+  it 'generates a valid random personal kennitala if kt_string equals false' do
     invalid_count = 0
     255.times do
       invalid_count += 1 unless Kennitala.new(false).person?
@@ -46,6 +46,12 @@ RSpec.describe Kennitala do
                                      'String or Boolean (false)')
   end
 
+  it 'assumes out-of-bounds day-of-month to be valid' do
+    out_of_bounds_kt_string = '6902691399'
+    expect { Kennitala.new(out_of_bounds_kt_string) }
+      .not_to raise_error(ArgumentError)
+  end
+
   describe '.to_s' do
     it 'removes non-numeric characters from the kennitala string' do
       kt_with_junk = Kennitala.new('Mjá 🐈 kisa 010130-2989')
@@ -57,6 +63,11 @@ RSpec.describe Kennitala do
     # This should cover .year, .month and .day as well
     it 'casts the kennitala to a Date object' do
       expect(@kt_person1.to_date).to be_an_instance_of(Date)
+    end
+    it 'assumes out-of-bounds day-of-month to be actually the last day of the month' do
+      kt = '6902691399'.to_kt
+      date = kt.to_date
+      expect(date.day).to eq(28)
     end
   end
 
